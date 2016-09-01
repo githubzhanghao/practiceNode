@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin:0;
+			padding:0;
+		}
+		ul,li{
+			list-style: none;
+		}
+		ul{
+			margin:100px auto;
+			width: 808px;
+			height: 400px;
+			overflow: hidden;
+			border:10px solid #674;
+		}
+		li{
+			float: left;
+			width: 33%;
+			height: 33%;
+			background-color: #367;
+			cursor: pointer;
+			background: url(1.png) no-repeat 0 0 ;
+		}
+		li.null{
+			background-color: #123;
+		}
+		li:not(.null):nth-child(2){
+			background-position: 33% 0;
+		}
+		li:not(.null):nth-child(3){
+			background-position: 66% 0;
+		}
+		li:not(.null):nth-child(4){
+			background-position: 0 33%;
+		}
+		li:not(.null):nth-child(5){
+			background-position: 33% 33%;
+		}
+		li:not(.null):nth-child(6){
+			background-position: 66% 33%;
+		}
+		li:not(.null):nth-child(7){
+			background-position: 0 66%;
+		}
+		li:not(.null):nth-child(8){
+			background-position: 33% 66%;
+		}
+		li:not(.null):nth-child(9){
+			background-position: 66% 66%;
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li class='null'></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+</body>
+</html>
