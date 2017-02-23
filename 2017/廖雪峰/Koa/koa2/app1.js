@@ -23,6 +23,7 @@ router.get('/',async (ctx,next)=>{
 });
 
 router.post('/signin',async (ctx,next)=>{
+	// ctx.response.body = ctx.request;
 	var name = ctx.request.body.name || '',
 		password = ctx.request.body.password || '';
 		console.log(name);
