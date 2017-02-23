@@ -49,6 +49,8 @@ Pet.create({
 */
 
 //用await写法
+
+//添加数据
 (async ()=>{
 	var dog = await Pet.create({
 		id:'d-'+now,
@@ -60,6 +62,34 @@ Pet.create({
 		version:0
 	});
 	console.log('created: '+JSON.stringify(dog));
+})();
+
+//查询
+(async () => {
+    var pets = await Pet.findAll({
+        where: {
+            name: 'Gaffey'
+        }
+    });
+    console.log(`find ${pets.length} pets:`);
+    for (let p of pets) {
+        console.log(JSON.stringify(p));
+    }
+})();
+
+//更新
+(async () => {
+    var p = await queryFromSomewhere();
+    p.gender = true;
+    p.updatedAt = Date.now();
+    p.version ++;
+    await p.save();
+})();
+
+//删除
+(async () => {
+    var p = await queryFromSomewhere();
+    await p.destroy();
 })();
 
 
