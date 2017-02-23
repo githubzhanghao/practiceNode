@@ -12,7 +12,7 @@ var sequelize = new Sequelize(config.database,config.username,config.password,{
 	}
 });
 
-var Pet = sequelize.define('pet',{
+var Pet = sequelize.define('pets',{
 		id:{
 			type:Sequelize.STRING(50),
 			primaryKey:true
@@ -76,7 +76,7 @@ Pet.create({
         console.log(JSON.stringify(p));
     }
 })();
-
+/*
 //更新
 (async () => {
     var p = await queryFromSomewhere();
@@ -92,7 +92,7 @@ Pet.create({
     await p.destroy();
 })();
 
-
+*/
 
 
 
