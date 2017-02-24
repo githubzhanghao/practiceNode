@@ -2,14 +2,14 @@
 const Sequelize = require('sequelize');
 const config = require('./config');
 
-var sequelize = new Sequelize(config.database,config.username,config.password,{
-	host:config.host,
-	dialect:'mysql',
-	pool:{
-		max:5,
-		min:0,
-		idle:30000
-	}
+var sequelize = new Sequelize(config.database, config.username, config.password, {
+    host: config.host,
+    dialect: 'mysql',
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 30000
+    }
 });
 
 var Pet = sequelize.define('pets',{
@@ -45,7 +45,7 @@ Pet.create({
 	console.log('created.' + JSON.stringify(p));
 }).catch(function(err){
 	console.log('failed:'+err);
-})
+});
 */
 
 //用await写法
@@ -54,7 +54,7 @@ Pet.create({
 (async ()=>{
 	var dog = await Pet.create({
 		id:'d-'+now,
-		name:'Odie',
+		name:'Gaffey',
 		gender:false,
 		birth:'2008-08-08',
 		createdAt:now,
@@ -74,19 +74,30 @@ Pet.create({
     console.log(`find ${pets.length} pets:`);
     for (let p of pets) {
         console.log(JSON.stringify(p));
+        console.log('update pet ...');
+        p.genner = true;
+        p.updatedAt = Date.now();
+        p.version ++;
+        await p.save();
+        if(p.version === 3){
+        	await p.destroy();
+        	console.log(`${p.name} was destroyed.`);
+        }
     }
 })();
+
 /*
-//更新
 (async () => {
     var p = await queryFromSomewhere();
+    console.log('----------------------');
+    console.log(JSON.stringify(p));
     p.gender = true;
     p.updatedAt = Date.now();
     p.version ++;
     await p.save();
 })();
 
-//删除
+
 (async () => {
     var p = await queryFromSomewhere();
     await p.destroy();
